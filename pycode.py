@@ -31,15 +31,23 @@ quiz = {
     }
 }
 
-
 score = 0
-for key, value in quiz.items():
-    print(value['question'])
-    answer = input("answer? ")
-    if answer.lower() == value['answer'].lower():
-        score = score + 1
-        print("The answer is correct ! You've gained "+ str(score)+ " point " )
+while True:
+    for key, value in quiz.items():
+        print(value['question'])
+        answer = input("answer? ")
+        if answer.lower() == value['answer'].lower():
+            score = score + 1
+            print("The answer is correct ! You've gained "+ str(score)+ " point " )
+        else:
+            print("You're answer is wrong, you're score: " + str(score))
+            print("The answer is : "+ value['answer'])
+    input_exite = input ("Do you want to play again (Y/N): ")
+    if input_exite == 'Y' or input_exite == 'y':
+        continue
+    elif input_exite == 'N' or input_exite == 'n':
+        break
     else:
-        print("You're answer is wrong, you're score: " + str(score))
-        print("The answer is : "+ value['answer'])
-    
+        print("Hint: Enter y or n")
+        input_exite = input ("Do you want to play again (Y/N): ")
+        score = 0
